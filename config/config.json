@@ -5,7 +5,7 @@
   "dev": {
     "browserSync": {
       "live": true,
-      "proxyURL": "http://localhost:8888/bk-dev/wordpress/wp-rig/test-1",
+      "proxyURL": "https://localhost:8888/bk-dev/wordpress/wp-rig/test-1",
       "bypassPort": "8181",
       "https": true
     }
