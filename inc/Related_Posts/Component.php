@@ -18,6 +18,10 @@ use function get_theme_file_uri;
 use function get_theme_file_path;
 use function wp_script_add_data;
 use function wp_localize_script;
+use function get_the_ID;
+use function rest_url;
+use function esc_html__;
+use function add_image_size;
 
 /**
  * Class for related posts.
@@ -43,6 +47,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_enqueue_related_posts_script' ) );
+		add_action( 'after_setup_theme', array( $this, 'action_add_image_sizes' ) );
 	}
 
 	/**
@@ -56,6 +61,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return array(
 			'display_related_posts' => array( $this, 'display_related_posts' ),
 		);
+	}
+
+	/**
+	 * Add custom image size.
+	 */
+	public function action_add_image_sizes() {
+		add_image_size( 'wpRigRelated', 720, 460, true );
 	}
 
 	/**
@@ -111,6 +123,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Display the related posts.
 	 */
 	public function display_related_posts() {
-		echo '<h2>Related Posts:</h2>';
+		printf(
+			'<h2 class="related-header">%s</h2>
+			<aside class="related-posts alignfull">
+				<div class="related-spinner"></div>
+			</aside>',
+			esc_html__( 'Related Posts:', 'wp-rig' )
+		);
 	}
 }
