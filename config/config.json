@@ -1,5 +1,7 @@
 {
   "theme": {
+    "slug": "newrig",
+    "name": "New Rig",
     "author": "Bristles &amp; Keys"
   },
   "dev": {
