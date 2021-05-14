@@ -318,6 +318,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					return is_page();
 				},
 			),
+			'wp-rig-footer-widgets'    => array(
+				'file'             => 'footer-widgets.min.css',
+				'preload_callback' => function() {
+					return wp_rig()->is_footer_widgets_active();
+				},
+			),
 		);
 
 		/**
